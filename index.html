@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScamLens - Think Before You Trust. Scan Before You Pay.</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <path d="M11 8v6"></path>
+            <path d="M8 11h6"></path>
+          </svg>
+        </div>
+        <span class="brand-name">Scam<span>Lens</span></span>
+      </div>
+
+      <div class="nav-badges">
+        <span class="pill-badge pill-private">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          Stateless &amp; Private
+        </span>
+        <span class="pill-badge pill-rules">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          Rule-Based Engine
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-badge">AI-Free Transparent Risk Assessment</div>
+      <h1 class="hero-title">Think Before You Trust.<br><span class="gradient-text">Scan Before You Pay.</span></h1>
+      <p class="hero-subtitle">
+        ScamLens helps you assess suspicious internship offers, unexpected lottery messages,
+        urgent payment threats, credential requests, and deceptive website links using an offline, rule-based safety engine.
+      </p>
+
+      <div class="hero-features">
+        <div class="feature-item">
+          <span class="dot green"></span>
+          <span>Zero Data Retention</span>
+        </div>
+        <div class="feature-item">
+          <span class="dot blue"></span>
+          <span>No Paid API Required</span>
+        </div>
+        <div class="feature-item">
+          <span class="dot purple"></span>
+          <span>Non-Executing Link Inspection</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Scanner Section -->
+  <main class="scanner-section">
+    <div class="scanner-card">
+      <!-- Tabs Navigation -->
+      <div class="tabs-header">
+        <button id="tab-message-btn" class="tab-btn active" type="button" data-tab="message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          Scan Message or Offer
+        </button>
+        <button id="tab-url-btn" class="tab-btn" type="button" data-tab="url">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          Scan Link or URL
+        </button>
+      </div>
+
+      <!-- Message Scanner Pane -->
+      <div id="pane-message" class="tab-pane active">
+        <div class="pane-header">
+          <label for="message-input" class="pane-label">Paste the suspicious message, SMS, email, or offer text below:</label>
+          <div class="sample-pills">
+            <span class="sample-label">Try sample:</span>
+            <button type="button" class="sample-btn" data-type="message" data-sample="internship">🎓 Internship Fee Scam</button>
+            <button type="button" class="sample-btn" data-type="message" data-sample="otp">🏦 Bank OTP Phishing</button>
+            <button type="button" class="sample-btn" data-type="message" data-sample="lottery">🎁 Lottery Jackpot</button>
+            <button type="button" class="sample-btn" data-type="message" data-sample="legitimate">💼 Legitimate Offer</button>
+            <button type="button" class="sample-btn" data-type="message" data-sample="promotion">🏷️ Flash Sale Deal</button>
+          </div>
+        </div>
+
+        <div class="input-wrapper">
+          <textarea id="message-input" rows="6" placeholder="Example: 'Congratulations! You are selected for our Web Developer internship. Please pay Rs. 2,500 security deposit before joining...'" maxlength="20000"></textarea>
+          <div class="input-meta">
+            <span id="char-counter" class="char-count">0 / 20,000 characters</span>
+            <button type="button" id="clear-message-btn" class="btn-text">Clear</button>
+          </div>
+        </div>
+
+        <div class="action-bar">
+          <button id="scan-message-btn" class="btn-primary" type="button">
+            <span class="btn-content">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Scan Message for Warning Indicators
+            </span>
+            <span class="spinner" style="display:none;"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- URL Scanner Pane -->
+      <div id="pane-url" class="tab-pane">
+        <div class="pane-header">
+          <label for="url-input" class="pane-label">Enter or paste the web link to analyze its structure:</label>
+          <div class="sample-pills">
+            <span class="sample-label">Try sample:</span>
+            <button type="button" class="sample-btn" data-type="url" data-sample="ip_host">⚠️ Raw IP Address</button>
+            <button type="button" class="sample-btn" data-type="url" data-sample="brand_spoof">🎭 Brand Spoof</button>
+            <button type="button" class="sample-btn" data-type="url" data-sample="shortener">🔗 Shortened Link</button>
+            <button type="button" class="sample-btn" data-type="url" data-sample="punycode">🔤 Punycode Domain</button>
+            <button type="button" class="sample-btn" data-type="url" data-sample="legit_url">✅ Legitimate Portal</button>
+          </div>
+        </div>
+
+        <div class="input-wrapper">
+          <div class="url-input-field">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <input type="text" id="url-input" placeholder="e.g. https://paypal-security-verification.xyz/login or http://192.168.1.100/verify" maxlength="2048">
+            <button type="button" id="clear-url-btn" class="btn-text">Clear</button>
+          </div>
+          <div class="url-safety-notice">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>Offline structural check only: ScamLens will never visit or open arbitrary links.</span>
+          </div>
+        </div>
+
+        <div class="action-bar">
+          <button id="scan-url-btn" class="btn-primary" type="button">
+            <span class="btn-content">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Inspect Link Structure
+            </span>
+            <span class="spinner" style="display:none;"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Alert Box -->
+    <div id="error-alert" class="alert-box error" style="display:none;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      <div class="alert-content">
+        <strong>Input Error:</strong>
+        <span id="error-message">Please check your input.</span>
+      </div>
+    </div>
+
+    <!-- Results Container -->
+    <div id="results-container" class="results-container" style="display:none;">
+      <div class="results-header-card">
+        <div class="risk-verdict-row">
+          <div class="verdict-label-group">
+            <span class="sub-heading">Assessment Verdict</span>
+            <div id="verdict-badge" class="risk-badge risk-suspicious">
+              <span class="badge-dot"></span>
+              <span id="verdict-text">Suspicious</span>
+            </div>
+          </div>
+
+          <div class="risk-score-group">
+            <div class="score-meta">
+              <span class="score-label">Risk Weight Index</span>
+              <span id="score-number" class="score-val">75 / 100</span>
+            </div>
+            <div class="score-meter-bar">
+              <div id="score-meter-fill" class="meter-fill fill-suspicious" style="width: 75%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="summary-box">
+          <div class="summary-title">Summary Analysis</div>
+          <p id="summary-text" class="summary-content">Loading assessment summary...</p>
+          <div class="analyzed-preview-box">
+            <span class="preview-label">Analyzed Snippet:</span>
+            <code id="analyzed-preview" class="preview-text">...</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Warning Indicators List -->
+      <div class="card-section">
+        <div class="section-title-row">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            Detected Warning Indicators (<span id="indicator-count">0</span>)
+          </h3>
+          <span class="section-hint">Transparent patterns matched by the rule engine</span>
+        </div>
+
+        <div id="indicators-list" class="indicators-grid">
+          <!-- Dynamically populated -->
+        </div>
+
+        <div id="no-indicators-state" class="empty-state" style="display:none;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <p>No high-risk scam indicators were identified by the rule engine.</p>
+        </div>
+      </div>
+
+      <!-- Recommended Actions -->
+      <div class="card-section">
+        <div class="section-title-row">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            Recommended Safety Actions
+          </h3>
+        </div>
+        <ul id="recommended-actions-list" class="checklist">
+          <!-- Dynamically populated -->
+        </ul>
+      </div>
+
+      <!-- Verification Limitations Notice -->
+      <div class="card-section limitations-box">
+        <div class="limitations-header">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <strong>Verification Limitations &amp; Educational Notice</strong>
+        </div>
+        <ul id="limitations-list" class="limitations-list">
+          <!-- Dynamically populated -->
+        </ul>
+      </div>
+
+      <!-- Results Footer Actions -->
+      <div class="results-actions-bar">
+        <button id="copy-report-btn" class="btn-secondary" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy Safety Report
+        </button>
+        <button id="scan-new-btn" class="btn-text" type="button">
+          Scan Another Item
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Educational Awareness Section -->
+  <section class="education-section">
+    <div class="education-container">
+      <div class="education-heading">
+        <h2>Common Scam Archetypes &amp; How They Work</h2>
+        <p>Scammers rely on predictable psychological triggers. Knowing these patterns helps you stay protected.</p>
+      </div>
+
+      <div class="archetypes-grid">
+        <div class="archetype-card">
+          <div class="archetype-icon">🎓</div>
+          <h4>The Internship Training Fee Trap</h4>
+          <p>
+            You receive an offer without a rigorous interview, but are asked to pay a "refundable registration fee",
+            "laptop delivery charge", or "training deposit".
+          </p>
+          <div class="golden-rule">Golden Rule: Legitimate employers never charge candidates money to begin working.</div>
+        </div>
+
+        <div class="archetype-card">
+          <div class="archetype-icon">⚡</div>
+          <h4>Artificial Urgency &amp; Panic</h4>
+          <p>
+            "Your bank account will be closed in 2 hours" or "Your electricity will be disconnected tonight".
+            Attackers create false emergencies so you react before thinking.
+          </p>
+          <div class="golden-rule">Golden Rule: High urgency is a psychological lever. Disconnect and call the verified helpline.</div>
+        </div>
+
+        <div class="archetype-card">
+          <div class="archetype-icon">🔑</div>
+          <h4>The Credential &amp; OTP Heist</h4>
+          <p>
+            Impersonating technical support or courier customs agents, callers or texts insist on you sharing a 6-digit OTP
+            or password to "cancel a charge" or "verify identity".
+          </p>
+          <div class="golden-rule">Golden Rule: An OTP is a digital signature. Anyone asking for it is trying to access your funds.</div>
+        </div>
+
+        <div class="archetype-card">
+          <div class="archetype-icon">🌐</div>
+          <h4>Camouflaged Links &amp; IP Addresses</h4>
+          <p>
+            Links that use numeric IP addresses (<code>http://192.168...</code>) or misleading subdomains
+            (<code>paypal.security-update.com</code>) to mimic trusted banking or shopping websites.
+          </p>
+          <div class="golden-rule">Golden Rule: Read the root domain immediately preceding the top-level extension (.com).</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-name">Scam<span>Lens</span></span>
+        </div>
+        <p class="footer-desc">
+          A transparent, educational safety assistant built to protect users against predatory online offers and deceptive links.
+        </p>
+      </div>
+      <div class="footer-disclaimer">
+        <strong>Important Disclaimer:</strong>
+        ScamLens provides rule-based heuristic pattern analysis for educational awareness.
+        It does not make definitive legal or criminal determinations about any entity, sender, or website.
+        Always verify important communications through independent, verified official channels.
+      </div>
+      <div class="footer-bottom">
+        <span>ScamLens MVP &bull; Python FastAPI &bull; Stateless &amp; Secure</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
